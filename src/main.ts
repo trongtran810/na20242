@@ -30,8 +30,6 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     bufferLogs: true,
   });
-  // app.useLogger(app.get(Logger));
-  // app.useGlobalInterceptors(new LoggerErrorInterceptor());
 
   if (isProduction) {
     app.enable('trust proxy');
