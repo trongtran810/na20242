@@ -1,0 +1,10 @@
+NODE_ENV=production
+
+API_KEY = "yHci2c5uLC"
+
+DB_TYPE = mysql
+DB_HOST = 127.0.0.1
+DB_PORT = 3306
+DB_USER = root
+DB_PASSWORD = "trongtd/123"
+DB_NAME = "naman_test"

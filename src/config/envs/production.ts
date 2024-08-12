@@ -31,5 +31,4 @@ export const config = {
     debug: false,
     playground: false,
   },
-  foo: 'pro-bar',
 };

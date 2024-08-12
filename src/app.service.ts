@@ -7,6 +7,6 @@ export class AppService {
 
   getHello(): string {
     // return 'Hello World!';
-    return this.config.get('ApiKey');
+    return this.config.get<string>('ApiKey') || '';
   }
 }
