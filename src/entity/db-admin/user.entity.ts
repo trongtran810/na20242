@@ -1,3 +1,4 @@
+import { UserRole } from '../../common/constants/user-role.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ database: 'naman_admin', name: 'user' })
@@ -6,13 +7,16 @@ export class User {
   id!: number;
 
   @Column('varchar', { nullable: false, length: 255, name: 'name' })
-  name?: string;
+  name!: string;
 
-  @Column('varchar', { nullable: false, length: 255, name: 'user_name' })
+  @Column('varchar', { nullable: false, length: 255, name: 'user_name', unique: true })
   userName!: string;
 
   @Column('varchar', { nullable: false, length: 255, name: 'password' })
   password!: string;
+
+  @Column('enum', { enum: UserRole, default: UserRole.Reporter, name: 'role' })
+  role!: UserRole;
 
   @Column('timestamp', {
     nullable: false,

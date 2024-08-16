@@ -9,6 +9,8 @@ export declare global {
       PORT: string;
 
       API_KEY: string;
+      JWT_SECRET: string;
+      JWT_EXPIRE_IN: string;
 
       DB_TYPE: string;
       DB_HOST: string;

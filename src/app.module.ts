@@ -8,6 +8,7 @@ import { AppController } from './app.controller';
 import { configuration } from './config';
 import { AppService } from './app.service';
 import { UserModule } from './db-admin/user';
+import { NativeQueryModule } from './db-admin/native-query';
 
 @Module({
   imports: [
@@ -24,7 +25,7 @@ import { UserModule } from './db-admin/user';
     CommonModule, // Global
     BaseModule,
 
-    // NativeQueryModule,
+    NativeQueryModule,
     UserModule,
   ],
   controllers: [AppController],

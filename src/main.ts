@@ -1,4 +1,4 @@
-import { Logger as NestLogger } from '@nestjs/common';
+import { Logger as NestLogger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import type { NestExpressApplication } from '@nestjs/platform-express';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
@@ -8,6 +8,7 @@ import { AppModule } from './app.module';
 
 async function setupSwagger(app: NestExpressApplication) {
   const config = new DocumentBuilder()
+    .addBearerAuth()
     .addApiKey(
       {
         type: 'apiKey',
@@ -39,6 +40,14 @@ async function bootstrap() {
   middleware(app);
 
   setupSwagger(app);
+
+  // Enable validation and transformation
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      whitelist: true,
+    }),
+  );
 
   await app.listen(process.env.PORT || 3000);
 
