@@ -1,5 +1,5 @@
 import * as bcrypt from 'bcrypt';
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { plainToInstance } from 'class-transformer';
@@ -7,8 +7,10 @@ import { Repository } from 'typeorm';
 
 import { User } from '#entity/db-admin/user.entity';
 import { UserDto } from '../../common/dtos/user/user.dto';
-import { CreateUserDto } from '../../common/dtos/user/create-user.dto';
+import { CreateUserDto } from '../../common/dtos/user/user-create';
 import { UserLoginDto } from '../../common/dtos/user/user-login.dto';
+import { UserAdminEdit } from 'src/common/dtos/user/user-admin-edit.dto';
+
 @Injectable()
 export class UserService {
   private readonly saltRounds = 10;
@@ -84,5 +86,27 @@ export class UserService {
     // Save the new password to the database
     await this.userRepository.save(user);
     return true;
+  }
+
+  async adminUpdateUser(id: number, userDto: UserAdminEdit): Promise<User> {
+    const user = await this.userRepository.findOne({ where: { id: id } });
+
+    if (!user) {
+      throw new NotFoundException(`User with username ${userDto.userName} not found`);
+    }
+
+    if (user.id != id) {
+      throw new BadRequestException(`Id ${id} not match username "${userDto.userName}"`);
+    }
+
+    if (userDto.role) {
+      user.role = userDto.role;
+    }
+
+    if (userDto.newPassword) {
+      user.password = await bcrypt.hash(userDto.newPassword, this.saltRounds);
+    }
+
+    return this.userRepository.save(user);
   }
 }

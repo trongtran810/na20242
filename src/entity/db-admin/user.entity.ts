@@ -15,7 +15,7 @@ export class User {
   @Column('varchar', { nullable: false, length: 255, name: 'password' })
   password!: string;
 
-  @Column('enum', { enum: UserRole, default: UserRole.Reporter, name: 'role' })
+  @Column('enum', { enum: UserRole, default: UserRole.Guest, name: 'role' })
   role!: UserRole;
 
   @Column('timestamp', {

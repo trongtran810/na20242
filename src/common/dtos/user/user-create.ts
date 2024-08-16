@@ -21,5 +21,5 @@ export class CreateUserDto {
 
   @ApiProperty({ enum: UserRole })
   @IsEnum(UserRole)
-  role?: UserRole = UserRole.Reporter; // Default role
+  role!: UserRole;
 }

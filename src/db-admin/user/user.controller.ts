@@ -1,12 +1,13 @@
-import { Body, Controller, Get, Post, UseGuards, Req, Put, HttpException, HttpStatus } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards, Req, HttpException, HttpStatus, Param, Patch } from '@nestjs/common';
 import { Request } from 'express';
 import { UserService } from './user.service';
 import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { UserDto } from 'src/common/dtos/user/user.dto';
-import { CreateUserDto } from 'src/common/dtos/user/create-user.dto';
+import { CreateUserDto } from 'src/common/dtos/user/user-create';
 import { UserLoginDto } from 'src/common/dtos/user/user-login.dto';
 import { AuthGuard } from 'src/auth/guards/auth.guard';
 import { UserChangePasswordDto } from 'src/common/dtos/user/user-change-password.dto';
+import { UserAdminEdit } from 'src/common/dtos/user/user-admin-edit.dto';
 
 @Controller('users')
 @ApiTags('User')
@@ -40,7 +41,7 @@ export class UserController {
   @ApiOperation({ summary: 'Change current user password' })
   @UseGuards(AuthGuard)
   @ApiBearerAuth()
-  @Put('change-password')
+  @Patch('change-password')
   async changePassword(@Body() changePasswordDto: UserChangePasswordDto, @Req() req: any) {
     const userId = req.user.sub; // Assuming you have the user ID in the JWT payload
     const { oldPassword, newPassword } = changePasswordDto;
@@ -52,5 +53,13 @@ export class UserController {
     }
 
     return { message: 'Password changed successfully' };
+  }
+
+  @Patch(':id')
+  @ApiOperation({ summary: 'Update user information by admin' })
+  @ApiResponse({ status: 200, description: 'The user has been successfully updated.', type: UserDto })
+  @ApiResponse({ status: 404, description: 'User not found' })
+  async updateUser(@Param('id') id: number, @Body() userAdminEdit: UserAdminEdit): Promise<UserDto> {
+    return this.userService.adminUpdateUser(id, userAdminEdit);
   }
 }
