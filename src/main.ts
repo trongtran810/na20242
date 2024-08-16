@@ -42,7 +42,8 @@ async function bootstrap() {
 
   await app.listen(process.env.PORT || 3000);
 
-  return app.getUrl();
+  process.env.SERVER_URL = await app.getUrl();
+  return process.env.SERVER_URL;
 }
 
 void (async (): Promise<void> => {

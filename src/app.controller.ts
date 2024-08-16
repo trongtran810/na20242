@@ -1,24 +1,27 @@
-import { Body, Controller, Post, UseGuards } from '@nestjs/common';
-import { ApiSecurity, ApiOperation } from '@nestjs/swagger';
+import { Controller, Get, Req, Res } from '@nestjs/common';
 
-import { NativeQueryService } from './native-query.service';
-import { NativeQueryDto } from './common/dtos/native-query/native-query.dto';
-import { ApiKeyGuard } from './auth/guards/api.guard';
+import { Request, Response } from 'express';
 
-import { ApiTags } from '@nestjs/swagger';
-
-@ApiTags('Query')
-@Controller('native-query')
+@Controller('/')
 export class AppController {
-  constructor(
-    private nativeQuery: NativeQueryService,
-  ) {}
+  @Get()
+  hello(@Req() request: Request, @Res() res: Response) {
+    const protocol = request.protocol; // http or https
+    const host = request.get('host'); // hostname + port
 
-  @Post()
-  @UseGuards(ApiKeyGuard)
-  @ApiSecurity('api-key')
-  @ApiOperation({ summary: 'Get the corresponding response beyond a native SQL query.' })
-  async queryData(@Body() nativeQuery: NativeQueryDto): Promise<any> {
-    return await this.nativeQuery.executeNativeQuery(nativeQuery.queryStr);
+    const docsUrl = `${protocol}://${host}/docs`;
+    const htmlContent = `
+      <html>
+        <head>
+          <title>Admin Nam An</title>
+        </head>
+        <body>
+          <h1>Hello from Nam An Admin! </h1>
+          <div>Click <a href="${docsUrl}">here</a> to check API doc</div>
+        </body>
+      </html>
+    `;
+    res.setHeader('Content-Type', 'text/html');
+    res.send(htmlContent);
   }
 }

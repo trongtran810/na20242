@@ -7,7 +7,7 @@ export const config = {
     port: process.env.DB_PORT || 3306,
     username: process.env.DB_USER || 'root',
     password: process.env.DB_PASSWORD || 'trongtd/123',
-    database: process.env.DB_NAME || 'trongtest',
+    database: '',
     extra: {
       connectionLimit: 10,
     },

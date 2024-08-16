@@ -3,6 +3,8 @@ export declare global {
 
   namespace NodeJS {
     interface ProcessEnv {
+      SERVER_URL: string;
+
       NODE_ENV: string;
       PORT: string;
 
@@ -13,7 +15,9 @@ export declare global {
       DB_PORT: string;
       DB_USER: string;
       DB_PASSWORD: string;
-      DB_NAME: string;
+
+      DB_ADMIN_NAME: string;
+      DB_ERP_NAME: string;
     }
   }
 }

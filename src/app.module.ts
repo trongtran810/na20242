@@ -5,13 +5,12 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { BaseModule } from './base';
 import { CommonModule } from './common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { configuration } from './config';
-import { NativeQueryService } from './native-query.service';
+import { AppService } from './app.service';
+import { UserModule } from './db-admin/user';
 
 @Module({
   imports: [
-    // LoggerModule.forRoot(loggerOptions),
     ConfigModule.forRoot({
       isGlobal: true,
       load: [configuration],
@@ -24,8 +23,11 @@ import { NativeQueryService } from './native-query.service';
     }),
     CommonModule, // Global
     BaseModule,
+
+    // NativeQueryModule,
+    UserModule,
   ],
   controllers: [AppController],
-  providers: [AppService, NativeQueryService],
+  providers: [AppService],
 })
 export class AppModule {}

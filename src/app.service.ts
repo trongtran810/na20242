@@ -1,12 +1,11 @@
+// example.service.ts
 import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AppService {
-  constructor(private config: ConfigService) {}
+  constructor() {}
 
-  getHello(): string {
-    // return 'Hello World!';
-    return this.config.get<string>('ApiKey') || '';
+  async getAppUrl(): Promise<string> {
+    return process.env.SERVER_URL;
   }
 }

@@ -6,6 +6,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "entity:load": "ts-node bin/entity",
+    "entity:sync": "typeorm-ts-node-commonjs -d bin/ormconfig.ts schema:sync",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
