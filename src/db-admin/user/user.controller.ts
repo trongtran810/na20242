@@ -8,6 +8,9 @@ import { UserLoginDto } from 'src/common/dtos/user/user-login.dto';
 import { AuthGuard } from 'src/auth/guards/auth.guard';
 import { UserChangePasswordDto } from 'src/common/dtos/user/user-change-password.dto';
 import { UserAdminEdit } from 'src/common/dtos/user/user-admin-edit.dto';
+import { Roles } from 'src/common/decorators/roles.decorator';
+import { UserRole } from 'src/common/constants/user-role.enum';
+import { RolesGuard } from 'src/auth/guards/role.guard';
 
 @Controller('users')
 @ApiTags('User')
@@ -16,12 +19,17 @@ export class UserController {
 
   // Handle GET /user request
   @Get()
-  @ApiResponse({ description: 'Admin get all user', type: [UserDto] })
+  @ApiResponse({ type: [UserDto] })
+  @ApiOperation({ summary: 'List all user' })
   async getAllUsers(): Promise<UserDto[]> {
     return this.userService.getAllUsers();
   }
 
   @Post('register')
+  @UseGuards(AuthGuard, RolesGuard)
+  @Roles(UserRole.Admin)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: '[Admin role require] Add new user' })
   async register(@Body() createUserDto: CreateUserDto): Promise<UserDto> {
     return this.userService.register(createUserDto);
   }
@@ -34,14 +42,15 @@ export class UserController {
   @Get('profile')
   @UseGuards(AuthGuard)
   @ApiBearerAuth()
+  @ApiOperation({ summary: 'Current user get their info' })
   getProfile(@Req() req: Request) {
     return req.user;
   }
 
-  @ApiOperation({ summary: 'Change current user password' })
+  @Patch('change-password')
   @UseGuards(AuthGuard)
   @ApiBearerAuth()
-  @Patch('change-password')
+  @ApiOperation({ summary: 'Change current user password' })
   async changePassword(@Body() changePasswordDto: UserChangePasswordDto, @Req() req: any) {
     const userId = req.user.sub; // Assuming you have the user ID in the JWT payload
     const { oldPassword, newPassword } = changePasswordDto;
@@ -55,11 +64,13 @@ export class UserController {
     return { message: 'Password changed successfully' };
   }
 
-  @Patch(':id')
-  @ApiOperation({ summary: 'Update user information by admin' })
+  @Patch(':userId')
+  @UseGuards(AuthGuard, RolesGuard)
+  @Roles(UserRole.Admin)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: '[Admin role require] Update user information by admin' })
   @ApiResponse({ status: 200, description: 'The user has been successfully updated.', type: UserDto })
-  @ApiResponse({ status: 404, description: 'User not found' })
-  async updateUser(@Param('id') id: number, @Body() userAdminEdit: UserAdminEdit): Promise<UserDto> {
-    return this.userService.adminUpdateUser(id, userAdminEdit);
+  async updateUser(@Param('userId') userId: number, @Body() userAdminEdit: UserAdminEdit): Promise<UserDto> {
+    return this.userService.adminUpdateUser(userId, userAdminEdit);
   }
 }

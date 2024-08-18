@@ -1,7 +1,7 @@
 import { UserRole } from '../../common/constants/user-role.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({ database: 'naman_admin', name: 'user' })
+@Entity({ database: 'artex_admin', name: 'user' })
 export class User {
   @PrimaryGeneratedColumn({ type: 'int', unsigned: true, name: 'id' })
   id!: number;

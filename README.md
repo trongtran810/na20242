@@ -71,3 +71,34 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+# Deploy note
+
+## Create database for manage accounts
+
+```sql
+CREATE DATABASE IF NOT EXISTS `artex_admin` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE`artex_admin`;
+```
+
+## Sync tables from dev to the sql server
+
+```
+npm run entity:sync
+```
+
+## Init users[username-password]
+
+- TrongTran-Trongtd/123
+- TranXuanCong-Trandat/123
+- Guest-Guest/123
+
+## Test cases:
+
+### Basic test
+
+- Register(admin user) => Login => Profile => Change password => [Admin] Update user info( password, role)
+
+### Role test
+
+- Register(reporter uesr) => [Use the reporter user] register => Update user info(password)

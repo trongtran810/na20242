@@ -52,7 +52,7 @@ export class UserService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    const payload = { username: user.userName, id: user.id, role: user.role };
+    const payload = { id: user.id, username: user.userName, role: user.role };
     return this.jwtService.sign(payload);
   }
 
