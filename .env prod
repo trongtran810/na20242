@@ -1,10 +1,12 @@
 NODE_ENV=production
+PORT=3123
 
 API_KEY = "yHci2c5uLC"
+JWT_SECRET= "baf9e833a9db55001e88605b1abf96d59dea42e1c9c9d026feb86f9a7fe859db"
+JWT_EXPIRE_IN= "3600s"
 
 DB_TYPE = mysql
 DB_HOST = 127.0.0.1
 DB_PORT = 3306
 DB_USER = root
 DB_PASSWORD = "trongtd/123"
-DB_NAME = "naman_test"
