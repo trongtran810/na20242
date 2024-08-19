@@ -2,12 +2,12 @@ import { Body, Controller, Get, Post, UseGuards, Req, HttpException, HttpStatus,
 import { Request } from 'express';
 import { UserService } from './user.service';
 import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { UserDto } from 'src/common/dtos/user/user.dto';
-import { CreateUserDto } from 'src/common/dtos/user/user-create';
-import { UserLoginDto } from 'src/common/dtos/user/user-login.dto';
+import { UserDto } from 'src/common/dtos/db-admin/user/user.dto';
+import { CreateUserDto } from 'src/common/dtos/db-admin/user/user-create';
+import { UserLoginDto } from 'src/common/dtos/db-admin/user/user-login.dto';
 import { AuthGuard } from 'src/auth/guards/auth.guard';
-import { UserChangePasswordDto } from 'src/common/dtos/user/user-change-password.dto';
-import { UserAdminEdit } from 'src/common/dtos/user/user-admin-edit.dto';
+import { UserChangePasswordDto } from 'src/common/dtos/db-admin/user/user-change-password.dto';
+import { UserAdminEdit } from 'src/common/dtos/db-admin/user/user-admin-edit.dto';
 import { Roles } from 'src/common/decorators/roles.decorator';
 import { UserRole } from 'src/common/constants/user-role.enum';
 import { RolesGuard } from 'src/auth/guards/role.guard';

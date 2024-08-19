@@ -6,10 +6,10 @@ import { plainToInstance } from 'class-transformer';
 import { Repository } from 'typeorm';
 
 import { User } from '#entity/db-admin/user.entity';
-import { UserDto } from '../../common/dtos/user/user.dto';
-import { CreateUserDto } from '../../common/dtos/user/user-create';
-import { UserLoginDto } from '../../common/dtos/user/user-login.dto';
-import { UserAdminEdit } from 'src/common/dtos/user/user-admin-edit.dto';
+import { UserDto } from '../../common/dtos/db-admin/user/user.dto';
+import { CreateUserDto } from '../../common/dtos/db-admin/user/user-create';
+import { UserLoginDto } from '../../common/dtos/db-admin/user/user-login.dto';
+import { UserAdminEdit } from 'src/common/dtos/db-admin/user/user-admin-edit.dto';
 
 @Injectable()
 export class UserService {

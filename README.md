@@ -94,3 +94,7 @@ Nest is [MIT licensed](LICENSE).
 ### Role test
 
 - Register(reporter uesr) => [Use the reporter user] register => Update user info(password)
+
+# Use guide
+
+- Login (get token) => use token for api needed
