@@ -74,30 +74,22 @@ Nest is [MIT licensed](LICENSE).
 
 # Deploy note
 
-## Create database for manage accounts
+## Create database for manage accounts: run notes/init-admin.sql
 
-```sql
-CREATE DATABASE IF NOT EXISTS `artex_admin` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE`artex_admin`;
-```
+## Inited users[role-username-password]
 
-## Sync tables from dev to the sql server
-
-```
-npm run entity:sync
-```
-
-## Init users[username-password]
-
-- TrongTran-Trongtd/123
-- TranXuanCong-Trandat/123
-- Guest-Guest/123
+- admin-trantrong810-Trongtd/123
+- admin-tranxuancong-Trandat/123
+- editor-editor-Editor/123
+- reporter-reporter-Reporter/123
+- guest-guest-Guest/123
 
 ## Test cases:
 
 ### Basic test
 
-- Register(admin user) => Login => Profile => Change password => [Admin] Update user info( password, role)
+- [Account testing] Register(admin user) => Login => Profile => Change password => [Admin] Update user info( password, role)
+- [Native query testing]
 
 ### Role test
 
