@@ -9,4 +9,7 @@ DB_TYPE = mysql
 DB_HOST = 127.0.0.1
 DB_PORT = 3306
 DB_USER = root
-DB_PASSWORD = "trongtd/123"
+DB_PASSWORD = "Axxa12354"
+
+MEDIA_ABSOLUTE_DIR_WIN="C:/dev"
+MEDIA_ABSOLUTE_DIR_UBT="/var/www/db.artexnaman.com/view/admin/themes/kcfinder/upload"

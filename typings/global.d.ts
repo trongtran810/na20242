@@ -21,7 +21,8 @@ export declare global {
       DB_ADMIN_NAME: string;
       DB_ERP_NAME: string;
 
-      MEDIA_ABSOLUTE_DIR: string;
+      MEDIA_ABSOLUTE_DIR_WIN: string;
+      MEDIA_ABSOLUTE_DIR_UBT: string;
     }
   }
 }

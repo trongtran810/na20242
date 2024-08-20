@@ -35,7 +35,7 @@ export class NativeQueryController {
   @Roles(UserRole.Admin) // Only users with the Admin role can access this route
   @ApiBearerAuth()
   @ApiOperation({
-    summary: 'Get the corresponding response beyond a native SQL query.',
+    summary: '[Admin role required] Get the corresponding response beyond a native SQL query.',
   })
   async query(@Body() nativeQuery: NativeQueryDto): Promise<any> {
     return await this.nativeQuery.executeNativeQuery(nativeQuery.queryStr);

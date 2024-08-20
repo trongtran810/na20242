@@ -2,7 +2,7 @@ import { Controller, Get, Req, Res } from '@nestjs/common';
 
 import { Request, Response } from 'express';
 
-@Controller('/')
+@Controller('/test')
 export class AppController {
   @Get()
   hello(@Req() request: Request, @Res() res: Response) {

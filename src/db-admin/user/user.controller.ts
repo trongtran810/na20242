@@ -29,7 +29,7 @@ export class UserController {
   @UseGuards(AuthGuard, RolesGuard)
   @Roles(UserRole.Admin)
   @ApiBearerAuth()
-  @ApiOperation({ summary: '[Admin role require] Add new user' })
+  @ApiOperation({ summary: '[Admin role required]  Add new user' })
   async register(@Body() createUserDto: CreateUserDto): Promise<UserDto> {
     return this.userService.register(createUserDto);
   }
@@ -68,7 +68,7 @@ export class UserController {
   @UseGuards(AuthGuard, RolesGuard)
   @Roles(UserRole.Admin)
   @ApiBearerAuth()
-  @ApiOperation({ summary: '[Admin role require] Update user information by admin' })
+  @ApiOperation({ summary: '[Admin role required]  Update user information by admin' })
   @ApiResponse({ status: 200, description: 'The user has been successfully updated.', type: UserDto })
   async updateUser(@Param('userId') userId: number, @Body() userAdminEdit: UserAdminEdit): Promise<UserDto> {
     return this.userService.adminUpdateUser(userId, userAdminEdit);
