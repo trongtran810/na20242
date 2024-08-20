@@ -76,6 +76,8 @@ export class CreateProductDto {
   @IsOptional()
   monopoly?: number;
 
+  // updateTime?: Date;
+
   @ApiProperty({ example: null, required: false })
   @IsDate()
   @IsOptional()
@@ -239,12 +241,12 @@ export class CreateProductDto {
   @ApiProperty({ example: 'vi', default: 'vi', required: false })
   @IsString()
   @IsOptional()
-  lang: string = 'vi';
+  lang?: string = 'vi';
 
   @ApiProperty({ example: 0, default: 0, required: false })
   @IsInt()
   @IsOptional()
-  isHide: number = 0;
+  isHide?: number = 0;
 
   @ApiProperty({ example: null, required: false })
   @IsDate()
@@ -279,7 +281,7 @@ export class CreateProductDto {
   @ApiProperty({ example: 0, default: 0, required: false })
   @IsInt()
   @IsOptional()
-  segment: number = 0;
+  segment?: number = 0;
 
   @ApiProperty({ example: '', required: false })
   @IsString()
@@ -288,33 +290,71 @@ export class CreateProductDto {
 
   @ApiProperty({ example: '', required: false, default: '' })
   @IsString()
+  @IsOptional()
   mktName: string = '';
 
   @ApiProperty({ example: '', required: false, default: '' })
   @IsString()
+  @IsOptional()
   mktCategory: string = '';
 
   @ApiProperty({ example: '', required: false, default: '' })
   @IsString()
+  @IsOptional()
   mktShortDescription: string = '';
 
   @ApiProperty({ example: '', required: false, default: '' })
   @IsString()
+  @IsOptional()
   mktDescription: string = '';
 
   @ApiProperty({ example: '', required: false, default: '' })
   @IsString()
+  @IsOptional()
   mktColor: string = '';
 
   @ApiProperty({ example: '', required: false, default: '' })
   @IsString()
+  @IsOptional()
   mktAccentColor: string = '';
 
   @ApiProperty({ example: '', required: false, default: '' })
   @IsString()
+  @IsOptional()
   mtkShape: string = '';
 
   @ApiProperty({ example: '', required: false, default: '' })
   @IsString()
+  @IsOptional()
   mktProductLine: string = '';
+
+  @ApiProperty({ example: '', required: false })
+  @IsString()
+  @IsOptional()
+  productCode2?: string;
+
+  @ApiProperty({ example: 65, required: false })
+  @IsInt()
+  @IsOptional()
+  sourceId?: number;
+
+  @ApiProperty({ example: 0, default: 1, required: false })
+  @IsInt()
+  @IsOptional()
+  publish?: number = 1;
+
+  @ApiProperty({ example: '["3","4","5","6","7","8","9"]', required: true, default: '' })
+  @IsString()
+  @IsOptional()
+  roomId: string = `["3","4","5","6","7","8","9"]`;
+
+  @ApiProperty({ example: 0, required: false })
+  @IsInt()
+  @IsOptional()
+  materialType: number = 0;
+
+  @ApiProperty({ example: 1, required: false })
+  @IsInt()
+  @IsOptional()
+  buyerId?: number;
 }

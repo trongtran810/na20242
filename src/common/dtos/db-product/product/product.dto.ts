@@ -1,201 +1,222 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class ProductDto {
-  @ApiProperty()
+  @ApiProperty({ required: true })
   id!: number;
 
   @ApiProperty()
   name?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: 'SG 09 05 110 5S', required: false })
   productCode?: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'Image price',
+    example: '/view/admin/themes/kcfinder/upload/images/C%C3%B3i%20xi%C3%AAn/Basket/IMG_0552.JPG',
+    required: false,
+  })
   imagePrice?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: '[]', required: false })
   imageDetail?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: '', required: false })
   imageMarketing?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: '', required: false })
   imageProduce?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: 'White plastic', required: false })
   descriptionSummary?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: '', required: false })
   descriptionDetail?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: 'White', required: false })
   color?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: 65, required: false })
   materialId?: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: 37, required: false })
   materialSubId?: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: 30, required: false })
   categoryId?: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: 3, required: false })
   supplierId?: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: 0, required: false })
   monopoly?: number;
 
-  @ApiProperty({ example: '2017-04-14T22:50:41.000Z' })
-  updateTime?: Date;
+  // updateTime?: Date;
 
-  @ApiProperty()
+  @ApiProperty({ example: null, required: false })
   validity?: Date;
 
-  @ApiProperty()
+  @ApiProperty({ example: 0, required: false })
   status?: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: 'S', required: false })
   size?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: '25', required: false })
   width?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: '20/34', required: false })
   height?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: '25', required: false })
   length?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: 'Chiếc', required: false })
   unit?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: '300', required: false })
   quantity?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: 8, required: false })
   boxOutQuantity?: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: 40, required: false })
   boxOutHeight?: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: 53, required: false })
   boxOutWidth?: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: 53, required: false })
   boxOutLength?: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: 0, required: false })
   boxInQuantity?: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: 0, required: false })
   boxInHeight?: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: 0, required: false })
   boxInWidth?: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: 0, required: false })
   boxInLength?: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: 0, required: false })
   cbm?: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: 0, required: false })
   quantityOfBoxOut?: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: 0, required: false })
   quantityOfCbm?: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: 0, required: false })
   quantityOfContainer?: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: 0, required: false })
   netWeight?: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: 0, required: false })
   grossWeight?: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: '', required: false })
   warning?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: '', required: false })
   note?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: 120000, required: false })
   priceBase?: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: '<p>\n	+- 1 cm</p>\n', required: false })
   tolerantWidth?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: '<p>\n	+- 1 cm</p>\n', required: false })
   tolerantLength?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: '<p>\n	+- 1 cm</p>\n', required: false })
   tolerantHeight?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: '', required: false })
   tolerantColor?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: '', required: false })
   tolerantWeight?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: '', required: false })
   userUpload?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: '', required: false })
   userUpdate?: string;
 
-  @ApiProperty({ default: 'vi' })
-  lang?: string;
+  @ApiProperty({ example: 'vi', default: 'vi', required: true })
+  lang!: string;
 
-  @ApiProperty({ default: 0 })
-  isHide?: number;
+  @ApiProperty({ example: 0, default: 0, required: true })
+  isHide!: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: null, required: false })
   photoDate?: Date;
 
-  @ApiProperty()
+  @ApiProperty({ example: null, required: false })
   marketingPrice?: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: null, required: false })
   alibabaDate?: Date;
 
-  @ApiProperty()
+  @ApiProperty({ example: null, required: false })
   alibabaLink?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: null, required: false })
   websiteLink?: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: null, required: false })
   websiteDate?: Date;
 
-  @ApiProperty({ default: 0 })
-  segment?: number;
+  @ApiProperty({ example: 0, default: 0, required: true })
+  segment!: number;
 
-  @ApiProperty()
+  @ApiProperty({ example: '', required: false })
   tags?: string;
 
-  @ApiProperty({ required: true })
-  mktName?: string;
+  @ApiProperty({ example: '', required: true, default: '' })
+  mktName!: string;
 
-  @ApiProperty({ required: true })
-  mktCategory?: string;
+  @ApiProperty({ example: '', required: true, default: '' })
+  mktCategory!: string;
 
-  @ApiProperty({ required: true })
-  mktShortDescription?: string;
+  @ApiProperty({ example: '', required: true, default: '' })
+  mktShortDescription!: string;
 
-  @ApiProperty({ required: true })
-  mktDescription?: string;
+  @ApiProperty({ example: '', required: true, default: '' })
+  mktDescription!: string;
 
-  @ApiProperty({ required: true })
-  mktColor?: string;
+  @ApiProperty({ example: '', required: true, default: '' })
+  mktColor!: string;
 
-  @ApiProperty({ required: true })
-  mktAccentColor?: string;
+  @ApiProperty({ example: '', required: true, default: '' })
+  mktAccentColor!: string;
 
-  @ApiProperty({ required: true })
-  mtkShape?: string;
+  @ApiProperty({ example: '', required: true, default: '' })
+  mtkShape!: string;
 
-  @ApiProperty({ required: true })
-  mktProductLine?: string;
+  @ApiProperty({ example: '', required: true, default: '' })
+  mktProductLine!: string;
+
+  @ApiProperty({ example: '', required: false })
+  productCode2?: string;
+
+  @ApiProperty({ example: 65, required: false })
+  sourceId?: number;
+
+  @ApiProperty({ example: 0, default: 1, required: false })
+  publish?: number = 1;
+
+  @ApiProperty({ example: '["3","4","5","6","7","8","9"]', required: true, default: '' })
+  roomId!: string;
+
+  @ApiProperty({ example: 0, required: true })
+  materialType!: number;
+
+  @ApiProperty({ example: 1, required: false })
+  buyerId?: number;
 }

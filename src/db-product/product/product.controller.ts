@@ -24,8 +24,7 @@ export class ProductController {
     Request explain: 
     - createProductDto: Product infos,
     - fileImagePrice: Blob,
-    - folderName: suppose we is in the parent directory of images
-    `,
+    - folderName: suppose we is in the parent directory of images.`,
   })
   @ApiResponse({ status: HttpStatus.CREATED, description: 'The product has been successfully created.', type: ProductDto })
   async createProduct(

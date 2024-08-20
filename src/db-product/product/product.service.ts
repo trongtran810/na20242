@@ -63,6 +63,6 @@ export class ProductService {
       return filePath.slice(this.ubuntuPrefix.length);
     }
 
-    return filePath;
+    return encodeURI(filePath);
   }
 }
