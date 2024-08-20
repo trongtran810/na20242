@@ -20,4 +20,5 @@ export const config = {
   ApiKey: process.env.API_KEY,
   jwtSecret: process.env.JWT_SECRET,
   jwtExpireIn: process.env.JWT_EXPIRE_IN,
+  mediaAbsolutePath: process.env.MEDIA_ABSOLUTE_DIR,
 };

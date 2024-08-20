@@ -9,6 +9,7 @@ import { configuration } from './config';
 import { AppService } from './app.service';
 import { UserModule } from './db-admin/user';
 import { NativeQueryModule } from './db-admin/native-query';
+import { ProductModule } from './db-product/product';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { NativeQueryModule } from './db-admin/native-query';
 
     NativeQueryModule,
     UserModule,
+    ProductModule,
   ],
   controllers: [AppController],
   providers: [AppService],

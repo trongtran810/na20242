@@ -13,7 +13,7 @@ import { UserRole } from 'src/common/constants/user-role.enum';
 import { RolesGuard } from 'src/auth/guards/role.guard';
 
 @Controller('users')
-@ApiTags('User')
+@ApiTags('Users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 

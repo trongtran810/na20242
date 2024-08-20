@@ -42,7 +42,7 @@ export class UserService {
     });
 
     // Save the user to the database
-    const userSaved = this.userRepository.save(user);
+    const userSaved = await this.userRepository.save(user);
     return plainToInstance(UserDto, userSaved);
   }
 
