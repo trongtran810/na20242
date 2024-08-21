@@ -11,5 +11,8 @@ DB_PORT = 3306
 DB_USER = root
 DB_PASSWORD = "Axxa12354"
 
-MEDIA_ABSOLUTE_DIR_WIN="C:/dev"
-MEDIA_ABSOLUTE_DIR_UBT="/var/www/db.artexnaman.com/view/admin/themes/kcfinder/upload"
+MEDIA_ABSOLUTE_DIR_WIN="C:/dev/naman2024/images"
+MEDIA_THUMB_ABSOLUTE_DIR_WIN="C:/dev/naman2024/.thumbs/images"
+MEDIA_ABSOLUTE_DIR_UBT="/var/www/db.artexnaman.com/view/admin/themes/kcfinder/upload/images"
+MEDIA_THUMB_ABSOLUTE_DIR_UBT="/var/www/db.artexnaman.com/view/admin/themes/kcfinder/upload/.thumbs/images"
+

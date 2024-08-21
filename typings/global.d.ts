@@ -22,7 +22,9 @@ export declare global {
       DB_ERP_NAME: string;
 
       MEDIA_ABSOLUTE_DIR_WIN: string;
+      MEDIA_THUMB_ABSOLUTE_DIR_WIN: string;
       MEDIA_ABSOLUTE_DIR_UBT: string;
+      MEDIA_THUMB_ABSOLUTE_DIR_UBT: string;
     }
   }
 }
