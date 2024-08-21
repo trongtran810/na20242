@@ -58,6 +58,7 @@ export class ProductService {
     }
 
     fs.writeFileSync(filePath, file.buffer);
+    fs.chmodSync(filePath, '0644');
 
     if (filePath.startsWith(this.ubuntuPrefix)) {
       return filePath.slice(this.ubuntuPrefix.length);
